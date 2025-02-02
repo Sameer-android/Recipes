@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.OnboardingFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewOnBoarding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:src="@drawable/onboarding_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onBoardingTvFoodRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/food_recipes"
+        app:fontFamily="@font/fjallaone"
+        android:textSize="@dimen/_24sdp"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imageViewOnBoarding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        />
+
+    <!--<androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onBoardingTvPreserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:gravity="center"
+        android:text="Preserve Your Legacy,\n Share Your Flavor"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_32ssp"
+        android:textStyle="bold"
+        app:fontFamily="@font/fjallaone"
+        app:layout_constraintBottom_toTopOf="@+id/onBoardingTvDes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onBoardingTvDes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Enjoy Restaurant Quality Meals at Home"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/_12sdp"
+        app:fontFamily="@font/fjallaone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onBoardingTvFoodRecipes" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onBoardingTvLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:background="@drawable/login_background_shape"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toTopOf="@+id/onBoardingTvSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onBoardingTvSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:text="Sign up"
+        android:background="@drawable/signup_background_shape"
+        android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

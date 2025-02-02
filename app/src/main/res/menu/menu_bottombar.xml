@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/discover"
+        android:title="Discover"
+        android:icon="@drawable/discover_bar_icon"
+        />
+    <item
+        android:id="@+id/recipes"
+        android:title="Recipes"
+        android:icon="@drawable/recipes_bar_icon"/>
+    <item
+        android:id="@+id/mainPlus"
+        android:icon="@drawable/baseline_add_circle_outline_24"
+        android:title="Add"
+        />
+
+    <item
+        android:id="@+id/chat"
+        android:title="Chat"
+        android:icon="@drawable/messag_icon"/>
+    <item
+        android:id="@+id/setting"
+        android:title="Settings"
+        android:icon="@drawable/baseline_settings_24"/>
+
+</menu>

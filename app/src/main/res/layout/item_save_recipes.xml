@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSaveRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/save_recipe_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSaveRecipeDiscription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chaat Tikki (Chole..."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="#191919"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivSaveRecipes" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconpeopleSaveRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/save_recipe_icon"
+            app:layout_constraintTop_toTopOf="@id/tviconNameSaveRecipe"
+            app:layout_constraintBottom_toBottomOf="@id/tviconNameSaveRecipe"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tviconNameSaveRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="Albert Flores"
+            android:textColor="@color/textColorgrey"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toEndOf="@+id/iconpeopleSaveRecipe"
+            app:layout_constraintTop_toBottomOf="@id/tvSaveRecipeDiscription" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/ratingSaveRecipe"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:rating="5"
+            android:stepSize="0.1"
+            android:theme="@style/RatingBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tviconNameSaveRecipe" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRatingSaveRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(4.5)"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ratingSaveRecipe"
+            app:layout_constraintStart_toEndOf="@id/ratingSaveRecipe"
+            app:layout_constraintTop_toTopOf="@id/ratingSaveRecipe" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
