@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.recipes.R
 import com.example.recipes.databinding.FragmentForgotBinding
@@ -22,6 +23,7 @@ class ForgotFragment : Fragment() {
         click(binding.root)
         return binding.root
     }
+
 
     private fun click(view: View) {
         binding.imageViewBackArrow.setOnClickListener {

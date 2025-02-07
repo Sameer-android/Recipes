@@ -10,7 +10,7 @@
         android:id="@+id/imageViewOnBoarding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_32sdp"
         android:src="@drawable/onboarding_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

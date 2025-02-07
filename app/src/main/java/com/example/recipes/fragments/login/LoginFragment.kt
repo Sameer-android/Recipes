@@ -15,9 +15,11 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.recipes.R
 import com.example.recipes.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var auth: FirebaseAuth
     private var mIsShowPass = false
 
 
@@ -27,6 +29,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater,container,false)
+        auth = FirebaseAuth.getInstance()
         click()
         stringDiffColor()
         binding.showPassword.setOnClickListener {
@@ -81,7 +84,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 Toast.makeText(requireContext(),"Fill All Details", Toast.LENGTH_LONG).show()
             }
             else{
-                findNavController().navigate(R.id.action_loginFragment_to_discoverFragment)
+                auth.signInWithEmailAndPassword(userName,password)
+                    .addOnCompleteListener{task ->
+                        if (task.isSuccessful){
+                            Toast.makeText(requireContext(),"Enjoy Delicious Recipes",Toast.LENGTH_LONG).show()
+                            findNavController().navigate(R.id.action_loginFragment_to_discoverFragment)
+                        } else{
+                            Toast.makeText(requireContext(),"Sign-In Failed:${task.exception?.message}",Toast.LENGTH_LONG).show()
+                        }
+                    }
             }
         }
     }

@@ -13,6 +13,8 @@ object Constantdata {
         datalist.add(RecipesViewModel(R.drawable.recipeslogofour, "Dinner"))
         datalist.add(RecipesViewModel(R.drawable.itemrecipeslogo, "All Recipes"))
         datalist.add(RecipesViewModel(R.drawable.recipeslogosecond, "BreakFast"))
+        datalist.add(RecipesViewModel(R.drawable.recipeslogothird, "Lunch"))
+        datalist.add(RecipesViewModel(R.drawable.recipeslogofour, "Dinner"))
         return datalist
     }
 }

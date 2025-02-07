@@ -5,4 +5,6 @@
     <string name="food_recipes"><![CDATA[Food & Recipes]]></string>
     <string name="share_your_culinary"><![CDATA[Publish your recipes to the world or keep\n them private. Roots & Recipes helps you\n pass down traditions to loved ones or\n inspire others.]]></string>
     <string name="roots_recipes"><![CDATA[Roots & Recipes]]></string>
+    <string name="dialogTitle">Logout</string>
+    <string name="dialogMessage">Logout to go Login Screen</string>
 </resources>

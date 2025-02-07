@@ -1,5 +1,6 @@
 package com.example.recipes.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -22,9 +23,11 @@ import androidx.core.text.set
 import androidx.navigation.fragment.findNavController
 import com.example.recipes.R
 import com.example.recipes.databinding.FragmentCreateAccountBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class CreateAccountFragment : Fragment() {
     private lateinit var binding: FragmentCreateAccountBinding
+    private lateinit var auth: FirebaseAuth
     private var mIsShowPass = false
 
     override fun onCreateView(
@@ -33,6 +36,7 @@ class CreateAccountFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
+        auth = FirebaseAuth.getInstance()
         binding.showPassword.setOnClickListener {
             mIsShowPass = !mIsShowPass
             showPassword(mIsShowPass)
@@ -94,10 +98,18 @@ class CreateAccountFragment : Fragment() {
             val checkBox = binding.CheckBox.isChecked
 
             if (name.isEmpty() || userName.isEmpty()|| email.isEmpty()|| password.isEmpty() || !checkBox){
-                Toast.makeText(requireContext(),"Fill All Details And Check", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Fill All Details And CheckBox", Toast.LENGTH_LONG).show()
             }
             else{
-                findNavController().navigate(R.id.action_createAccountFragment_to_walkthroughOneFragment)
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(Activity()) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(requireContext(),"Registration Successful",Toast.LENGTH_LONG).show()
+                            findNavController().navigate(R.id.action_createAccountFragment_to_walkthroughOneFragment)
+                        } else {
+                            Toast.makeText(requireContext(),"Registration Failed:${task.exception?.message}",Toast.LENGTH_LONG).show()
+                        }
+                    }
             }
         }
     }

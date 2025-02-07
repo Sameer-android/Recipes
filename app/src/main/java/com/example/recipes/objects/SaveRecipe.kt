@@ -26,6 +26,12 @@ object SaveRecipe {
                 R.drawable.save_recipe_icon_third, "Jenny Wilson"
             )
         )
+        datalistSaveRecipe.add(
+            SaveRecipeViewModel(
+                R.drawable.save_recipe_image, "Chaat Tikki (Chole...",
+                R.drawable.save_recipe_icon, "Albert Flores"
+            )
+        )
         return datalistSaveRecipe
     }
 }

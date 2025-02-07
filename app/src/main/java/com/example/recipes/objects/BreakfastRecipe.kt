@@ -13,6 +13,9 @@ object BreakfastRecipe {
             R.drawable.breakfast_icon_people,"Marvin McKinney"))
         datalistBreakfast.add(BreakfastViewModel(R.drawable.breakfast_image,"Gun Powder Recipe (Paruppu Podi)",
             R.drawable.breakfast_second_icon,"Dianne Russell"))
+        datalistBreakfast.add(BreakfastViewModel(
+            R.drawable.breakfast_image,"Gun Powder Recipe (Paruppu Podi)",
+            R.drawable.breakfast_icon_people,"Marvin McKinney"))
         return datalistBreakfast
     }
 }
