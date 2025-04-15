@@ -52,7 +52,6 @@
         android:layout_marginEnd="@dimen/_12sdp"
         android:padding="@dimen/_10sdp"
         android:background="@drawable/shape_edittext_create_acc"
-        android:ems="10"
         android:hint="Email address"
         android:textColorHint="#80000000"
         android:textColor="@color/black"

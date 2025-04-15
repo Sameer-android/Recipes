@@ -23,11 +23,15 @@ import androidx.core.text.set
 import androidx.navigation.fragment.findNavController
 import com.example.recipes.R
 import com.example.recipes.databinding.FragmentCreateAccountBinding
+import com.example.recipes.fragments.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class CreateAccountFragment : Fragment() {
     private lateinit var binding: FragmentCreateAccountBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var mDbRef:DatabaseReference
     private var mIsShowPass = false
 
     override fun onCreateView(
@@ -104,6 +108,7 @@ class CreateAccountFragment : Fragment() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(Activity()) { task ->
                         if (task.isSuccessful) {
+                            addUserToDatabase(name,email, auth.currentUser?.uid!!)
                             Toast.makeText(requireContext(),"Registration Successful",Toast.LENGTH_LONG).show()
                             findNavController().navigate(R.id.action_createAccountFragment_to_walkthroughOneFragment)
                         } else {
@@ -112,6 +117,11 @@ class CreateAccountFragment : Fragment() {
                     }
             }
         }
+    }
+
+    private fun addUserToDatabase(name: String, email: String, uid: String) {
+        mDbRef = FirebaseDatabase.getInstance().getReference()
+        mDbRef.child("user").child(uid).setValue(User(name,email,uid))
     }
 
     private fun showPassword(isShow:Boolean){

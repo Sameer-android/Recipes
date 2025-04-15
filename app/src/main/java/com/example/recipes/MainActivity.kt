@@ -106,6 +106,11 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
+                R.id.chat -> {
+                    navController!!.navigate(R.id.usersFragment)
+                    false
+                }
+
                 R.id.recipes -> {
                     navController!!.navigate(R.id.recipesFragment)
                     true

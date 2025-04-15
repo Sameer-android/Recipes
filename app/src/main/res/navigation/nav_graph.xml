@@ -111,12 +111,16 @@
         <action
             android:id="@+id/action_discoverFragment_to_logoutFragment"
             app:destination="@id/logoutFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/addRecipesFragment"
         android:name="com.example.recipes.fragments.addRecipes.AddRecipesFragment"
         android:label="fragment_add_recipes"
-        tools:layout="@layout/fragment_add_recipes" >
+        tools:layout="@layout/fragment_add_recipes">
         <action
             android:id="@+id/action_addRecipesFragment_to_recipesFragment"
             app:popUpTo="@id/discoverFragment"
@@ -140,5 +144,20 @@
         <action
             android:id="@+id/action_logoutFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.example.recipes.fragments.chat.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.example.recipes.fragments.chat.UsersFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users">
+        <action
+            android:id="@+id/action_usersFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment" />
     </fragment>
 </navigation>
