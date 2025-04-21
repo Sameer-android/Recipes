@@ -1,6 +1,8 @@
 package com.example.recipes.fragments.models
 
-class User {
+import android.provider.ContactsContract.CommonDataKinds.Email
+
+/*class User {
     var name : String? = null
     var email : String? = null
     var uid : String? = null
@@ -12,4 +14,10 @@ class User {
         this.email = email
         this.uid = uid
     }
-}
+}*/
+
+data class User(
+    var name : String? = null,
+    var email: String? = null,
+    var uid:String? = null,
+)

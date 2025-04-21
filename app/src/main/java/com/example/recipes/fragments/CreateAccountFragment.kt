@@ -1,11 +1,8 @@
 package com.example.recipes.fragments
 
 import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
-import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.HideReturnsTransformationMethod
@@ -14,12 +11,11 @@ import android.text.method.PasswordTransformationMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.text.set
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.recipes.R
 import com.example.recipes.databinding.FragmentCreateAccountBinding
@@ -31,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase
 class CreateAccountFragment : Fragment() {
     private lateinit var binding: FragmentCreateAccountBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var mDbRef:DatabaseReference
+    private lateinit var mDbRef: DatabaseReference
     private var mIsShowPass = false
 
     override fun onCreateView(
@@ -39,7 +35,7 @@ class CreateAccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
+        binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         binding.showPassword.setOnClickListener {
             mIsShowPass = !mIsShowPass
@@ -77,16 +73,51 @@ class CreateAccountFragment : Fragment() {
 
         val textColor = Color.parseColor("#E85353")
 
-        spannableStringText.setSpan(loginClick,alreadyAccStart,alreadyAccEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableStringText.setSpan(UnderlineSpan(),alreadyAccStart,alreadyAccEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableStringText.setSpan(ForegroundColorSpan(textColor),alreadyAccStart,alreadyAccEnd,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableStringText.setSpan(
+            loginClick,
+            alreadyAccStart,
+            alreadyAccEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableStringText.setSpan(
+            UnderlineSpan(),
+            alreadyAccStart,
+            alreadyAccEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableStringText.setSpan(
+            ForegroundColorSpan(textColor),
+            alreadyAccStart,
+            alreadyAccEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
 
-        spannableString.setSpan(UnderlineSpan(), userTermService, userNoticeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(textColor), userTermService, userNoticeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            UnderlineSpan(),
+            userTermService,
+            userNoticeEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(textColor),
+            userTermService,
+            userNoticeEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
-        spannableString.setSpan(UnderlineSpan(), privacyPolicyStart, privacyPolicyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(textColor), privacyPolicyStart, privacyPolicyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            UnderlineSpan(),
+            privacyPolicyStart,
+            privacyPolicyEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(textColor),
+            privacyPolicyStart,
+            privacyPolicyEnd,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         binding.tvTermCondition.text = spannableString
         binding.tvAlreadyAcc.text = spannableStringText
@@ -101,18 +132,26 @@ class CreateAccountFragment : Fragment() {
             val password = binding.etPasswordCreateAcc.text.toString()
             val checkBox = binding.CheckBox.isChecked
 
-            if (name.isEmpty() || userName.isEmpty()|| email.isEmpty()|| password.isEmpty() || !checkBox){
-                Toast.makeText(requireContext(),"Fill All Details And CheckBox", Toast.LENGTH_LONG).show()
-            }
-            else{
+            if (name.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty() || !checkBox) {
+                Toast.makeText(requireContext(), "Fill All Details And CheckBox", Toast.LENGTH_LONG)
+                    .show()
+            } else {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(Activity()) { task ->
                         if (task.isSuccessful) {
-                            addUserToDatabase(name,email, auth.currentUser?.uid!!)
-                            Toast.makeText(requireContext(),"Registration Successful",Toast.LENGTH_LONG).show()
+                            addUserToDatabase(name, email, auth.currentUser?.uid!!)
+                            Toast.makeText(
+                                requireContext(),
+                                "Registration Successful",
+                                Toast.LENGTH_LONG
+                            ).show()
                             findNavController().navigate(R.id.action_createAccountFragment_to_walkthroughOneFragment)
                         } else {
-                            Toast.makeText(requireContext(),"Registration Failed:${task.exception?.message}",Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                requireContext(),
+                                "Registration Failed:${task.exception?.message}",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
             }
@@ -121,15 +160,17 @@ class CreateAccountFragment : Fragment() {
 
     private fun addUserToDatabase(name: String, email: String, uid: String) {
         mDbRef = FirebaseDatabase.getInstance().getReference()
-        mDbRef.child("user").child(uid).setValue(User(name,email,uid))
+        mDbRef.child("user").child(uid).setValue(User(name, email, uid))
     }
 
-    private fun showPassword(isShow:Boolean){
-        if (isShow){
-            binding.etPasswordCreateAcc.transformationMethod = HideReturnsTransformationMethod.getInstance()
+    private fun showPassword(isShow: Boolean) {
+        if (isShow) {
+            binding.etPasswordCreateAcc.transformationMethod =
+                HideReturnsTransformationMethod.getInstance()
             binding.showPassword.setImageResource(R.drawable.baseline_visibility_off_24)
-        } else{
-            binding.etPasswordCreateAcc.transformationMethod = PasswordTransformationMethod.getInstance()
+        } else {
+            binding.etPasswordCreateAcc.transformationMethod =
+                PasswordTransformationMethod.getInstance()
             binding.showPassword.setImageResource(R.drawable.show_password_eye)
         }
         binding.etPasswordCreateAcc.setSelection(binding.etPasswordCreateAcc.text.toString().length)
