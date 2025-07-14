@@ -72,11 +72,11 @@ class ChatsFragment : Fragment() {
 
             })
 
-        binding.chatRv.addOnLayoutChangeListener(OnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+        binding.chatRv.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             binding.chatRv.scrollToPosition(
                 messageList.size - 1
             )
-        })
+        }
         //adding the message to database
         binding.sendMessageBtn.setOnClickListener {
             val message = binding.typeMessage.text.toString()
@@ -100,5 +100,10 @@ class ChatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("Checking","onViewCreated Call")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Checking","onDestroy Call")
     }
 }
