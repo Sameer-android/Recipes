@@ -69,8 +69,6 @@ class CreateAccountFragment : Fragment() {
                 findNavController().navigate(R.id.action_createAccountFragment_to_loginFragment)
             }
         }
-
-
         val textColor = Color.parseColor("#E85353")
 
         spannableStringText.setSpan(
@@ -132,7 +130,7 @@ class CreateAccountFragment : Fragment() {
             val password = binding.etPasswordCreateAcc.text.toString()
             val checkBox = binding.CheckBox.isChecked
 
-            if (name.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty() || !checkBox) {
+            if (name.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty() && password.length<8 || !checkBox) {
                 Toast.makeText(requireContext(), "Fill All Details And CheckBox", Toast.LENGTH_LONG)
                     .show()
             } else {
