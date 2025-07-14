@@ -2,6 +2,7 @@ package com.example.recipes.fragments.chat
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLayoutChangeListener
@@ -94,5 +95,10 @@ class ChatsFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("Checking","onViewCreated Call")
     }
 }
