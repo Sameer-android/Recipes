@@ -102,6 +102,11 @@ class ChatsFragment : Fragment() {
         Log.d("Checking","onViewCreated Call")
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("Checking","onResume Call")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.d("Checking","onDestroy Call")
